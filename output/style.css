@@ -1,0 +1,15 @@
+.card-header{
+    background-color: rgb(216, 149, 177);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.employee-card {
+    margin: 1em;
+    max-width: 280px;
+    width: 90%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+    border: none;
+  }

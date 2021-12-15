@@ -1,6 +1,7 @@
+// node modules
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateTeam = require("./src/page-template.js");
+const generateTeam = require("./src/template.js");
 
 // lib modules
 const Engineer = require("./lib/Engineer");
@@ -16,7 +17,7 @@ const questions = async () => {
     .prompt([
       {
         type: "input",
-        message: "What is your name?",
+        message: "What is your first and last name?",
         name: "name",
       },
       {
@@ -26,27 +27,25 @@ const questions = async () => {
       },
       {
         type: "input",
-        message: "What is your email?",
+        message: "What is your email address?",
         name: "email",
       },
       {
         type: "list",
-        message: "What is your role?",
+        message: "What is your role here?",
         name: "role",
         choices: ["Engineer", "Intern", "Manager"],
       },
     ])
 
-
-    
     //  console.log(answers);
-      // if manager selected, answer these specific question
+      // manager profile questions
       if (answers.role === "Manager") {
         const managerAns = await inquirer
           .prompt([
             {
               type: "input",
-              message: "What is your office number",
+              message: "What is your office number?",
               name: "officeNumber",
             },
           ])
@@ -58,7 +57,7 @@ const questions = async () => {
           );
           newStaffMemberData.push(newManager);
           
-        // if engineer selected answer these set of questions
+        // engineer profile questions
       } else if (answers.role === "Engineer") {
         const githubAns = await inquirer
           .prompt([
@@ -76,13 +75,13 @@ const questions = async () => {
             );
             newStaffMemberData.push(newEngineer);
           
-        // if intern selected answer these set of questions
+        // intern profile questions
       } else if (answers.role === "Intern") {
         const internAns = await inquirer
           .prompt([
             {
               type: "input",
-              message: "What university did you attend?",
+              message: "Where did you obtain your highest level of education?",
               name: "school",
             },
           ])
@@ -128,3 +127,4 @@ function createTeam () {
     "utf-8"
   );
 }
+
